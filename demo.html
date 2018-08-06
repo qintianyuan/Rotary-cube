@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转正方体</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: #000;
+		}
+		.btn {
+			color: #fff;
+			padding: 10px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		.wrap {
+			position: relative;
+			margin: 100px auto;
+			width: 300px;
+			height: 300px;
+			perspective: 1500px;
+		}
+		.wrap .box {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 300px;
+			transform-style: preserve-3d;
+			color: #333;
+			font-size: 80px;
+			font-weight: bold;
+			text-align: center;
+			line-height: 300px;
+			animation: rotating 10s linear 0s infinite;
+		}
+		.box p {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 300px;
+			border: 1px solid rgba(255,255,255,.8);
+			border-radius: 8px;
+			background-color: rgba(255,255,255,.6);
+			opacity: .5;
+			transition: all 1s linear 0s;
+		}
+		.box p:nth-child(1){
+			transform: translateZ(150px);
+		}
+		.box p:nth-child(2){
+			transform: rotateX(90deg) translateZ(150px);
+		}
+		.box p:nth-child(3){
+			transform: translateZ(-150px);
+		}
+		.box p:nth-child(4){
+			transform: rotateX(90deg) translateZ(-150px);
+		}
+		.box p:nth-child(5){
+			transform: rotateY(90deg) translateZ(-150px);
+		}
+		.box p:nth-child(6){
+			transform: rotateY(90deg) translateZ(150px);
+		}
+		.box p:nth-child(7),.box p:nth-child(8),.box p:nth-child(9),.box p:nth-child(10),.box p:nth-child(11),.box p:nth-child(12){
+			top: 50px;
+			left: 50px;
+			width: 200px;
+			height: 200px;
+			background-color: rgba(255,255,255,.8);
+			font-size: 60px;
+			line-height: 200px;
+			text-align: center;
+		}
+		.box p:nth-child(7){
+			transform: translateZ(100px);
+		}
+		.box p:nth-child(8){
+			transform: rotateX(90deg) translateZ(100px);
+		}
+		.box p:nth-child(9){
+			transform: translateZ(-100px);
+		}
+		.box p:nth-child(10){
+			transform: rotateX(90deg) translateZ(-100px);
+		}
+		.box p:nth-child(11){
+			transform: rotateY(90deg) translateZ(-100px);
+		}
+		.box p:nth-child(12){
+			transform: rotateY(90deg) translateZ(100px);
+		}
+		@keyframes rotating {
+			from {
+				transform: rotateY(0deg);
+			}
+			to {
+				transform: rotateY(360deg);
+			}
+		}
+		.box p.spin {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 300px;
+			height: 300px;
+			font-size: 100px;
+			line-height: 300px;
+		}
+		.box p.spin:nth-child(1){
+			transform: rotateY(0deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(2){
+			transform: rotateY(30deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(3){
+			transform: rotateY(60deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(4){
+			transform: rotateY(90deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(5){
+			transform: rotateY(120deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(6){
+			transform: rotateY(150deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(7){
+			transform: rotateY(180deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(8){
+			transform: rotateY(210deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(9){
+			transform: rotateY(240deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(10){
+			transform: rotateY(270deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(11){
+			transform: rotateY(300deg) translateZ(550px);
+		}
+		.box p.spin:nth-child(12){
+			transform: rotateY(330deg) translateZ(550px);
+		}
+	</style>
+</head>
+<body>
+	<button class="btn">切换样式</button>
+	<div class="wrap">
+		<div class="box">
+			<p>1</p>
+			<p>2</p>
+			<p>3</p>
+			<p>4</p>
+			<p>5</p>
+			<p>6</p>
+			<p>7</p>
+			<p>8</p>
+			<p>9</p>
+			<p>10</p>
+			<p>11</p>
+			<p>12</p>
+		</div>
+	</div>
+
+</body>
+</html>
+<script>
+	var btn = document.querySelector('.btn');
+	var bps = document.querySelectorAll("p");
+	var istoggle = true;
+	btn.onclick = function(){
+		if(istoggle){
+			for(var i = 0; i < bps.length; i++){
+				bps[i].className = 'spin';
+			}
+		}else{
+			for(var i = 0; i < bps.length; i++){
+				bps[i].className = '';
+			}
+		}
+		istoggle = !istoggle;
+	}
+</script>
